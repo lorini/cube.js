@@ -1,18 +1,42 @@
 <html>
 <head>
+
 	<title>Cube.js Demo</title>
+
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.cube.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/jquery.cube.css">
+	
 	<style type="text/css">
 		body{background: url('img/bg-pattern1.png') repeat left center, url('img/bg-pattern2.png') repeat left center;}
 	</style>
+
 </head>
 <body>
 	<div id="cube">
-		<div class="face"></div>
-		<div class="face"></div>
-		<div class="face"></div>
-		<div class="face"></div>
+
+		<div id="front" class="face">
+			<h1>Face #1</h1>
+		</div>
+		<div id="right" class="face">
+			<h1>Face #2</h1>
+		</div>
+		<div id="back" class="face">
+			<h1>Face #3</h1>
+		</div>
+		<div id="left" class="face">
+			<h1>Face #4</h1>
+		</div>
+
 	</div>
+
+	<script type="text/javascript">
+		var $Cube ;
+		$(function(){
+			$Cube = $.Cube("#cube");
+		});
+	</script>
+
 </body>
 </html>

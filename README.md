@@ -1,4 +1,4 @@
 cube.js
 =======
 
-jQuery plugin which transforms your website into cube
+jQuery plugin which transforms an element into fullscreen 3D cube

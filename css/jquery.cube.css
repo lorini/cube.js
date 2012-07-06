@@ -1,0 +1,28 @@
+*{
+	margin : 0 ;
+	padding: 0 ;
+}
+
+body{
+	-webkit-perspective:600;
+}
+
+#cube{
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: -webkit-transform 2s;
+}
+
+#cube div{
+	position:absolute;
+
+   	opacity:0.4;
+}
+
+
+#front{
+   	-webkit-transform: translateZ( 0px );
+}
+	
+h1{
+	font-size: 10em; 
+}
