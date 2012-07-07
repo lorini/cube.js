@@ -56,7 +56,7 @@
             if(options == "right") base.position++ ;
             if(options == "left") base.position-- ;
             
-            base.$el.css("-webkit-transform","rotateY( -"+base.angle*base.position+"deg ) translateZ(600px)  ")
+            base.$el.css("-webkit-transform","rotateY( -"+base.angle*base.position+"deg ) translateZ(600px) translateX(-"+$(window).width()/2+"px ) ")
 
             return base ;
         };
