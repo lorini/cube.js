@@ -1,28 +1,12 @@
-*{
-	margin : 0 ;
-	padding: 0 ;
+#cube .face {
+	background-color:red;
+	opacity:0.3;
 }
 
-body{
-	-webkit-perspective:600;
+body {
+	background:url(../img/bg-pattern1.png) repeat left center, url(../img/bg-pattern2.png) repeat left center;
 }
 
-#cube{
-	-webkit-transform-style: preserve-3d;
-	-webkit-transition: -webkit-transform 2s;
-}
-
-#cube div{
-	position:absolute;
-
-   	opacity:0.4;
-}
-
-
-#front{
-   	-webkit-transform: translateZ( 0px );
-}
-	
-h1{
-	font-size: 10em; 
+h1 {
+	font-size:10em;
 }
