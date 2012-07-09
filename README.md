@@ -10,11 +10,11 @@ How-to
 
 1. First include the *.js file : 
 
-<pre><code><script type="text/javascript" src="js/jquery.cube.js"></script></code></pre>
+<script type="text/javascript" src="js/jquery.cube.js"></script>
 
 2. Then create your four elements like this : 
 
-<pre><code><div id="cube">
+<div id="cube">
 
 	<div id="front" class="face">
 		<h1>Face #1</h1>
@@ -29,10 +29,10 @@ How-to
 		<h1>Face #4</h1>
 	</div>
 
-</div></code></pre>
+</div>
 
 3. And finally execute the plugin : 
 
-<pre><code><script type="text/javascript">
+<script type="text/javascript">
 	$.Cube("#cube");
-</script></code></pre>
+</script>
