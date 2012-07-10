@@ -12,13 +12,14 @@ How-to
 
 2. Then create your four elements like this : 
 
-	<div id="cube">
-		<div id="front" class="face"></div>
-		<div id="right" class="face"></div>
-		<div id="back"  class="face"></div>
-		<div id="left"  class="face"></div>
-	</div>
-
+```js
+<div id="cube">
+	<div id="front" class="face"></div>
+	<div id="right" class="face"></div>
+	<div id="back"  class="face"></div>
+	<div id="left"  class="face"></div>
+</div>
+```
 
 3. And finally execute the plugin : 
 ```js
