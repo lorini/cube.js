@@ -11,7 +11,17 @@
             base.options  = $.extend({},$.Cube.defaultOptions, options);
             
             // TODO : Make this initial position as an option  
-            base.position = 0  ; 
+            base.position = 0  ;      
+
+            if (typeof(document.body.style.tranform) != 'undefined') {
+                base.prefix = "";
+            } else if (typeof(document.body.style.MozTransform) != 'undefined') {
+                base.prefix = "-moz-";
+            } else if (typeof(document.body.style.webkitTransform) != 'undefined') {
+                base.prefix = "-webkit-";
+            } else {
+                base.prefix = "";
+            }
 
             /* Key binding for using the arrowkeys to rotate the cube */
             // TODO : propose options for key binding 
@@ -29,11 +39,16 @@
                 } 
             });
 
-            // TODO : Replace "-webkit-transform" by generic attribute "transform" 
-            // TODO : Find a better way to do that (without CSS file)
-            $('body').css({"-webkit-perspective" : 800});
-            base.$el.css({ "-webkit-transform-style": "preserve-3d","-webkit-transition": "-webkit-transform 1s"});
-            base.$el.find(".face").css({ "position":"absolute", "-webkit-backface-visibility": "hidden"});
+            // TODO : Find a better way to do that (without CSS file)            
+    
+            $('body').css(base.prefix + "perspective",800);
+
+            base.$el.css(base.prefix + "transform-style", "preserve-3d")
+                    .css(base.prefix + "transition"     , base.prefix + "transform 1s");
+
+            base.$el.find(".face").css("position"                         ,"absolute")
+                                  .css(base.prefix + "backface-visibility", "hidden");
+
             $('*').css({margin : 0 ,padding: 0});
             
             /* Event binding for resizing the cube when the windows size is modified */
@@ -52,8 +67,7 @@
 
             var transform = "rotateY("+rotateY+"deg) translateX("+translateX+"px ) translateZ("+translateY+"px)"; 
 
-            // TODO : Remplace "-webkit-transform" by generic attribute "transform" 
-            base.$el.css("-webkit-transform", transform );
+            base.$el.css(base.prefix + "transform", transform );
             return base ;
         };
     
@@ -64,9 +78,9 @@
 
             base.$el.find(".face").height($(window).height()).width(windowsWidth);
             // TODO : Find a simply function 
-            base.$el.find("#right").css( "-webkit-transform", "rotateY("+1*cubeAngle+"deg) translateX(  "+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
-            base.$el.find("#back" ).css( "-webkit-transform", "rotateY("+2*cubeAngle+"deg) translateX(                   0px ) translateZ( "+windowsWidth + "px )");
-            base.$el.find("#left" ).css( "-webkit-transform", "rotateY("+3*cubeAngle+"deg) translateX( -"+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
+            base.$el.find("#right").css( base.prefix + "transform", "rotateY("+1*cubeAngle+"deg) translateX(  "+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
+            base.$el.find("#back" ).css( base.prefix + "transform", "rotateY("+2*cubeAngle+"deg) translateX(                   0px ) translateZ( "+windowsWidth + "px )");
+            base.$el.find("#left" ).css( base.prefix + "transform", "rotateY("+3*cubeAngle+"deg) translateX( -"+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
         }
 
         base.init();
