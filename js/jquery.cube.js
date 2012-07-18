@@ -41,7 +41,8 @@
 
             // TODO : Find a better way to do that (without CSS file)            
     
-            $('body').css(base.prefix + "perspective",800);
+            $('body').css(base.prefix + "perspective",800)
+                     .css('overflow', 'hidden');
 
             base.$el.css(base.prefix + "transform-style", "preserve-3d")
                     .css(base.prefix + "transition"     , base.prefix + "transform 1s");
@@ -73,10 +74,15 @@
     
         base.resize = function(){
             var windowsWidth = $(window).width() ; 
-            var cubeAngle    = 90 ;
+
+            // ∑(inner angle of polygone) = (n-2)*180 
+            // so rotation = ((n-2)*180)/n = 180 - 360 / n 
+            var cubeAngle = 180 - 360 / base.$el.find(".face").length  ;
+            
             base.rotate() ;
 
             base.$el.find(".face").height($(window).height()).width(windowsWidth);
+            
             // TODO : Find a simply function 
             base.$el.find("#right").css( base.prefix + "transform", "rotateY("+1*cubeAngle+"deg) translateX(  "+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
             base.$el.find("#back" ).css( base.prefix + "transform", "rotateY("+2*cubeAngle+"deg) translateX(                   0px ) translateZ( "+windowsWidth + "px )");
