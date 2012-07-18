@@ -8,7 +8,7 @@ This version is working on Chrome, and there is a lot of TODOs on my TODO's List
 Demo
 ----
 
-You can find an non-working version here : http://gulian.fr/cube.js/ 
+You can find an almost working version here : http://gulian.fr/cube.js/ 
 > Rotate the cube with arrow keys Luke 
 
 How-to

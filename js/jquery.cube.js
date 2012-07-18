@@ -42,25 +42,31 @@
         };
         
         base.rotate = function(direction){
-            // TODO : Find a simply function 
-            switch(base.position%4){ 
-                case 0: transform = "rotateY(-"+90*base.position+"deg)" ; break;  
-                case 1: transform = "rotateY(-"+90*base.position+"deg) translateZ("+$(window).width()/2+"px) translateX(-"+$(window).width()/2+"px ) "; break; 
-                case 2: transform = "rotateY(-"+90*base.position+"deg) translateZ("+$(window).width() + "px) "; break; 
-                case 3: transform = "rotateY(-"+90*base.position+"deg) translateZ("+$(window).width()/2+"px) translateX("+$(window).width()/2+"px ) "; break; 
-            }
+
+            var windowsWidth = $(window).width() ; 
+            var deg2radians = Math.PI * 2 / 360;
+
+            var rotateY    = - 90 * base.position ; 
+            var translateX = windowsWidth * Math.round(5 * Math.sin((rotateY*deg2radians)))/10 ;  
+            var translateY = windowsWidth * Math.round(Math.sin(rotateY*deg2radians/2)*Math.sin(rotateY*deg2radians/2)*10)/10 ;  
+
+            var transform = "rotateY("+rotateY+"deg) translateX("+translateX+"px ) translateZ("+translateY+"px)"; 
+
             // TODO : Remplace "-webkit-transform" by generic attribute "transform" 
             base.$el.css("-webkit-transform", transform );
             return base ;
         };
     
         base.resize = function(){
+            var windowsWidth = $(window).width() ; 
+            var cubeAngle    = 90 ;
             base.rotate() ;
-            base.$el.find(".face").height($(window).height()).width($(window).width());
+
+            base.$el.find(".face").height($(window).height()).width(windowsWidth);
             // TODO : Find a simply function 
-            base.$el.find("#back" ).css( "-webkit-transform", "rotateY(180deg) translateZ(  "+$(window).width() + "px )");
-            base.$el.find("#left" ).css( "-webkit-transform", "rotateY(-90deg) translateZ(  "+$(window).width()/2+"px ) translateX( -"+$(window).width()/2+"px )");
-            base.$el.find("#right").css( "-webkit-transform", "rotateY( 90deg) translateZ(  "+$(window).width()/2+"px ) translateX(  "+$(window).width()/2+"px )");
+            base.$el.find("#right").css( "-webkit-transform", "rotateY("+1*cubeAngle+"deg) translateX(  "+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
+            base.$el.find("#back" ).css( "-webkit-transform", "rotateY("+2*cubeAngle+"deg) translateX(                   0px ) translateZ( "+windowsWidth + "px )");
+            base.$el.find("#left" ).css( "-webkit-transform", "rotateY("+3*cubeAngle+"deg) translateX( -"+windowsWidth/2+"px ) translateZ( "+windowsWidth/2+"px )");
         }
 
         base.init();
